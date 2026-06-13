@@ -24,7 +24,7 @@ const reasons = [
     icon: HiChatAlt2,
     title: 'Transparent Communication',
     description:
-      'Stay informed every step of the way. We maintain clear, proactive communication with regular updates, demos, and milestone reviews so you are always in the loop on your project's progress.',
+      "Stay informed every step of the way. We maintain clear, proactive communication with regular updates, demos, and milestone reviews so you are always in the loop on your project's progress.",
     gradient: 'from-violet-500 to-purple-400',
     glow: '#8b5cf6',
   },

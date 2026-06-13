@@ -3,26 +3,25 @@ import { useScrollAnimation, staggerContainer, staggerItem } from '../hooks/useS
 import { SectionHeader } from './Services'
 import {
   SiReact,
-  SiJava,
   SiSpring,
   SiNodedotjs,
   SiMysql,
   SiPostgresql,
   SiMongodb,
-  SiAmazonwebservices,
   SiDocker,
 } from 'react-icons/si'
+import { FaJava, FaAws } from 'react-icons/fa'
 import { TbApi } from 'react-icons/tb'
 
 const technologies = [
   { name: 'React', icon: SiReact, color: '#61DAFB', category: 'Frontend' },
-  { name: 'Java', icon: SiJava, color: '#ED8B00', category: 'Backend' },
+  { name: 'Java', icon: FaJava, color: '#ED8B00', category: 'Backend' },
   { name: 'Spring Boot', icon: SiSpring, color: '#6DB33F', category: 'Backend' },
   { name: 'Node.js', icon: SiNodedotjs, color: '#339933', category: 'Backend' },
   { name: 'MySQL', icon: SiMysql, color: '#4479A1', category: 'Database' },
   { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1', category: 'Database' },
   { name: 'MongoDB', icon: SiMongodb, color: '#47A248', category: 'Database' },
-  { name: 'AWS', icon: SiAmazonwebservices, color: '#FF9900', category: 'Cloud' },
+  { name: 'AWS', icon: FaAws, color: '#FF9900', category: 'Cloud' },
   { name: 'Docker', icon: SiDocker, color: '#2496ED', category: 'DevOps' },
   { name: 'REST APIs', icon: TbApi, color: '#8B5CF6', category: 'Integration' },
 ]
