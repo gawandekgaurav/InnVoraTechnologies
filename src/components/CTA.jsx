@@ -98,17 +98,6 @@ const CTA = () => {
               Contact Us
             </motion.a>
           </motion.div>
-
-          {/* Trust line */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
-            className="mt-8 text-sm text-slate-600"
-          >
-            No commitment required · Free initial consultation · Response within 24 hours
-          </motion.p>
         </motion.div>
       </div>
     </section>

@@ -130,26 +130,6 @@ const Testimonials = () => {
             <TestimonialCard key={testimonial.id} testimonial={testimonial} index={index} />
           ))}
         </motion.div>
-
-        {/* Trust badges */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-14 flex flex-wrap justify-center gap-6 text-center"
-        >
-          {[
-            { value: '4.9/5', label: 'Average Rating' },
-            { value: '100%', label: 'Client Retention' },
-            { value: '30+', label: 'Happy Clients' },
-          ].map((stat) => (
-            <div key={stat.label} className="flex flex-col items-center gap-1">
-              <div className="text-2xl font-bold gradient-text-blue">{stat.value}</div>
-              <div className="text-xs text-slate-500">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   )

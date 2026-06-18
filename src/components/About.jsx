@@ -109,25 +109,6 @@ const About = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Floating stat cards */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -top-5 -right-5 glass rounded-2xl px-5 py-3 border border-blue-500/20 text-center"
-              >
-                <div className="text-2xl font-bold gradient-text-blue">50+</div>
-                <div className="text-xs text-slate-400">Projects</div>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-                className="absolute -bottom-5 -left-5 glass rounded-2xl px-5 py-3 border border-purple-500/20 text-center"
-              >
-                <div className="text-2xl font-bold text-purple-400">98%</div>
-                <div className="text-xs text-slate-400">Satisfaction</div>
-              </motion.div>
             </div>
           </motion.div>
 

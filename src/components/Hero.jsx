@@ -127,25 +127,6 @@ const Hero = () => {
                 Explore Services
               </motion.a>
             </motion.div>
-
-            {/* Stats row */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-wrap gap-8 pt-4"
-            >
-              {[
-                { value: '50+', label: 'Projects Delivered' },
-                { value: '30+', label: 'Happy Clients' },
-                { value: '5+', label: 'Years Experience' },
-              ].map((stat) => (
-                <div key={stat.label} className="flex flex-col">
-                  <span className="text-2xl sm:text-3xl font-bold gradient-text-blue">{stat.value}</span>
-                  <span className="text-sm text-slate-500">{stat.label}</span>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           {/* Right column - Visual element */}

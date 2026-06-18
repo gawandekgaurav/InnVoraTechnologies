@@ -4,29 +4,13 @@ import { useScrollAnimation, slideInLeft, slideInRight } from '../hooks/useScrol
 import { SectionHeader } from './Services'
 import { HiMail, HiPhone, HiLocationMarker, HiArrowRight, HiCheckCircle } from 'react-icons/hi'
 import { MdRocketLaunch } from 'react-icons/md'
+import { contactCards } from '../config/site'
+import { submitLead } from '../services/leadSubmission'
 
 const contactInfo = [
-  {
-    icon: HiMail,
-    label: 'Email Us',
-    value: 'hello@innvoratech.com',
-    href: 'mailto:hello@innvoratech.com',
-    color: '#3b82f6',
-  },
-  {
-    icon: HiPhone,
-    label: 'Call Us',
-    value: '+91 98765 43210',
-    href: 'tel:+919876543210',
-    color: '#10b981',
-  },
-  {
-    icon: HiLocationMarker,
-    label: 'Our Office',
-    value: 'Pune, Maharashtra, India',
-    href: null,
-    color: '#9333ea',
-  },
+  { icon: HiMail, ...contactCards[0] },
+  { icon: HiPhone, ...contactCards[1] },
+  { icon: HiLocationMarker, ...contactCards[2] },
 ]
 
 const initialForm = {
@@ -41,6 +25,7 @@ const Contact = () => {
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   const { ref: leftRef, isInView: leftInView } = useScrollAnimation(0.1)
   const { ref: rightRef, isInView: rightInView } = useScrollAnimation(0.1)
@@ -66,6 +51,9 @@ const Contact = () => {
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }))
     }
+    if (submitError) {
+      setSubmitError('')
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -75,12 +63,20 @@ const Contact = () => {
       setErrors(newErrors)
       return
     }
+
     setLoading(true)
-    // Simulate network request
-    await new Promise((res) => setTimeout(res, 1500))
-    setLoading(false)
-    setSubmitted(true)
-    setForm(initialForm)
+    setSubmitError('')
+
+    try {
+      await submitLead(form)
+      setSubmitted(true)
+      setForm(initialForm)
+      setErrors({})
+    } catch (error) {
+      setSubmitError(error.message || 'Something went wrong. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const inputClass = (field) =>
@@ -257,7 +253,7 @@ const Contact = () => {
                       name="phone"
                       value={form.phone}
                       onChange={handleChange}
-                      placeholder="+91 98765 43210"
+                      placeholder="9322287523"
                       className={inputClass('phone')}
                       autoComplete="tel"
                     />
@@ -285,6 +281,12 @@ const Contact = () => {
                     <p className="mt-1.5 text-xs text-red-400">{errors.projectDetails}</p>
                   )}
                 </div>
+
+                {submitError && (
+                  <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+                    {submitError}
+                  </div>
+                )}
 
                 {/* Submit */}
                 <motion.button

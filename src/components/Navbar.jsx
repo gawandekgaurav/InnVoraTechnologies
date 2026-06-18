@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
 import Logo from './Logo'
+import MsmeBadge from './MsmeBadge'
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -68,9 +69,12 @@ const Navbar = () => {
             >
               <Logo size={38} />
               <div className="flex flex-col">
-                <span className="font-bold text-white text-base leading-tight font-display">
-                  InnVora
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-white text-base leading-tight font-display">
+                    InnVora
+                  </span>
+                  <MsmeBadge />
+                </div>
                 <span className="text-xs text-slate-400 leading-tight tracking-wide">
                   Technologies
                 </span>

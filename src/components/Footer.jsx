@@ -1,16 +1,12 @@
 import { motion } from 'framer-motion'
 import Logo from './Logo'
+import MsmeBadge from './MsmeBadge'
 import {
   HiMail,
   HiPhone,
   HiLocationMarker,
 } from 'react-icons/hi'
-import {
-  FaLinkedinIn,
-  FaTwitter,
-  FaGithub,
-  FaInstagram,
-} from 'react-icons/fa'
+import { contactCards } from '../config/site'
 
 const quickLinks = [
   { label: 'Home', href: '#home' },
@@ -28,17 +24,10 @@ const services = [
   { label: 'UI/UX Design', href: '#services' },
 ]
 
-const socialLinks = [
-  { icon: FaLinkedinIn, href: 'https://linkedin.com', label: 'LinkedIn', color: '#0A66C2' },
-  { icon: FaTwitter, href: 'https://twitter.com', label: 'Twitter', color: '#1DA1F2' },
-  { icon: FaGithub, href: 'https://github.com', label: 'GitHub', color: '#ffffff' },
-  { icon: FaInstagram, href: 'https://instagram.com', label: 'Instagram', color: '#E1306C' },
-]
-
 const contactInfo = [
-  { icon: HiMail, value: 'hello@innvoratech.com', href: 'mailto:hello@innvoratech.com' },
-  { icon: HiPhone, value: '+91 98765 43210', href: 'tel:+919876543210' },
-  { icon: HiLocationMarker, value: 'Pune, Maharashtra, India', href: null },
+  { icon: HiMail, ...contactCards[0] },
+  { icon: HiPhone, ...contactCards[1] },
+  { icon: HiLocationMarker, ...contactCards[2] },
 ]
 
 const handleNavClick = (href) => {
@@ -68,9 +57,12 @@ const Footer = () => {
             >
               <Logo size={40} />
               <div className="flex flex-col">
-                <span className="font-bold text-white text-base leading-tight font-display">
-                  InnVora
-                </span>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-bold text-white text-base leading-tight font-display">
+                    InnVora
+                  </span>
+                  <MsmeBadge />
+                </div>
                 <span className="text-xs text-slate-500 leading-tight tracking-wide">
                   Technologies
                 </span>
@@ -81,27 +73,6 @@ const Footer = () => {
             <p className="text-slate-500 text-sm leading-relaxed max-w-xs">
               A modern technology company building innovative software solutions and delivering reliable IT services that help businesses grow in the digital era.
             </p>
-
-            {/* Social Links */}
-            <div className="flex items-center gap-3">
-              {socialLinks.map((social) => {
-                const Icon = social.icon
-                return (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className="w-9 h-9 rounded-lg glass border border-white/8 flex items-center justify-center text-slate-500 hover:text-white hover:border-white/20 transition-all duration-300"
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Icon size={15} />
-                  </motion.a>
-                )
-              })}
-            </div>
           </div>
 
           {/* Quick Links */}
