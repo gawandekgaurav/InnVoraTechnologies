@@ -5,7 +5,6 @@ import { SectionHeader } from './Services'
 import { HiMail, HiPhone, HiLocationMarker, HiArrowRight, HiCheckCircle } from 'react-icons/hi'
 import { MdRocketLaunch } from 'react-icons/md'
 import { contactCards } from '../config/site'
-import { submitLead } from '../services/leadSubmission'
 
 const contactInfo = [
   { icon: HiMail, ...contactCards[0] },
@@ -68,12 +67,22 @@ const Contact = () => {
     setSubmitError('')
 
     try {
-      await submitLead(form)
+      const { name, email, phone, projectDetails } = form
+
+      await fetch(import.meta.env.VITE_GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify({ name, email, phone, projectDetails }),
+      })
+
       setSubmitted(true)
       setForm(initialForm)
       setErrors({})
     } catch (error) {
-      setSubmitError(error.message || 'Something went wrong. Please try again.')
+      setSubmitError('Something went wrong. Please try again later.')
+      console.error(error)
     } finally {
       setLoading(false)
     }
@@ -184,7 +193,7 @@ const Contact = () => {
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-2 font-display">Message Sent!</h3>
                   <p className="text-slate-400">
-                    Thank you for reaching out. Our team will get back to you within 24 hours.
+                    Thank you! Your inquiry has been submitted successfully. We'll contact you soon.
                   </p>
                 </div>
                 <motion.button

@@ -5,7 +5,6 @@ import Services from './components/Services'
 import Technologies from './components/Technologies'
 import WhyChooseUs from './components/WhyChooseUs'
 import About from './components/About'
-import Testimonials from './components/Testimonials'
 import CTA from './components/CTA'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -27,7 +26,6 @@ function App() {
         <Technologies />
         <WhyChooseUs />
         <About />
-        <Testimonials />
         <CTA />
         <Contact />
       </main>

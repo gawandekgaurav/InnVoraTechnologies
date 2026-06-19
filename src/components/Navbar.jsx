@@ -8,7 +8,6 @@ const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Services', href: '#services' },
   { label: 'About', href: '#about' },
-  { label: 'Testimonials', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -20,7 +19,7 @@ const Navbar = () => {
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 20)
 
-    const sections = ['home', 'services', 'technologies', 'about', 'testimonials', 'contact']
+    const sections = ['home', 'services', 'technologies', 'about', 'contact']
     const scrollPos = window.scrollY + 100
 
     for (const section of sections.reverse()) {
@@ -73,7 +72,6 @@ const Navbar = () => {
                   <span className="font-bold text-white text-base leading-tight font-display">
                     InnVora
                   </span>
-                  <MsmeBadge />
                 </div>
                 <span className="text-xs text-slate-400 leading-tight tracking-wide">
                   Technologies

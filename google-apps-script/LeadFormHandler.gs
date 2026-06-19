@@ -10,35 +10,50 @@
  * 4. Copy the Web App URL into VITE_GOOGLE_SCRIPT_URL in your .env file
  */
 
+function doGet() {
+  return ContentService.createTextOutput("Apps Script is running!");
+}
+
 function doPost(e) {
+
   try {
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
+
     const data = JSON.parse(e.postData.contents);
 
-    const srno = Math.max(sheet.getLastRow(), 1);
-    const timestamp = new Date();
+    const serialNo = sheet.getLastRow();
 
     sheet.appendRow([
-      srno,
-      timestamp,
-      data.name || '',
-      data.email || '',
-      data.phone || '',
-      data.projectDetails || '',
+      serialNo,
+      new Date(),
+      data.name,
+      data.email,
+      data.phone,
+      data.projectDetails
     ]);
 
-    return createJsonResponse({ success: true });
-  } catch (error) {
-    return createJsonResponse({ success: false, error: error.message });
+    return ContentService
+      .createTextOutput(
+        JSON.stringify({
+          result: "success"
+        })
+      )
+      .setMimeType(ContentService.MimeType.JSON);
+
   }
-}
 
-function doGet() {
-  return createJsonResponse({ success: true, status: 'ok' });
-}
+  catch (err) {
 
-function createJsonResponse(payload) {
-  return ContentService.createTextOutput(JSON.stringify(payload)).setMimeType(
-    ContentService.MimeType.JSON
-  );
+    return ContentService
+      .createTextOutput(
+        JSON.stringify({
+          result: "error",
+          message: err.toString()
+        })
+      )
+      .setMimeType(ContentService.MimeType.JSON);
+
+  }
+
 }
