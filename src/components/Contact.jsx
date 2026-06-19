@@ -224,7 +224,7 @@ const Contact = () => {
                     name="name"
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="John Doe"
+                    placeholder="Rahul Sharma"
                     className={inputClass('name')}
                     autoComplete="name"
                   />
@@ -245,7 +245,7 @@ const Contact = () => {
                       name="email"
                       value={form.email}
                       onChange={handleChange}
-                      placeholder="john@company.com"
+                      placeholder="rahul@innvoratechnologies.com"
                       className={inputClass('email')}
                       autoComplete="email"
                     />
@@ -263,7 +263,7 @@ const Contact = () => {
                       name="phone"
                       value={form.phone}
                       onChange={handleChange}
-                      placeholder="9322287523"
+                      placeholder="9876543210"
                       className={inputClass('phone')}
                       autoComplete="tel"
                     />
